@@ -1,6 +1,6 @@
 {
   "Usdc": {
-    "address": "0xDe7B025e6fB0B6eFD62F9A89FDA3A8aB20e0A616",
+    "address": "0x03e3549b666D8e7248665c9015173eced59965Ec",
     "abi": [
       {
         "inputs": [
@@ -620,8 +620,8 @@
       }
     ]
   },
-  "TombUsdcLpTombRewardPool": {
-    "address": "0xB45D7dC40cCc931A1c4cf06b8fC10cdEF3EAA4cb",
+  "TombGenesisRewardPool": {
+    "address": "0x560d77a6016ed989940c2F1378fc0f3AdB5AC5A3",
     "abi": [
       {
         "inputs": [
@@ -734,52 +734,8 @@
         "type": "event"
       },
       {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "name": "epochEndTimes",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "name": "epochTombPerSecond",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "name": "epochTotalRewards",
+        "inputs": [],
+        "name": "TOTAL_REWARDS",
         "outputs": [
           {
             "internalType": "uint256",
@@ -798,6 +754,19 @@
             "internalType": "address",
             "name": "",
             "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "poolEndTime",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
           }
         ],
         "stateMutability": "view",
@@ -857,12 +826,38 @@
       },
       {
         "inputs": [],
+        "name": "runningTime",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
         "name": "tomb",
         "outputs": [
           {
             "internalType": "contract IERC20",
             "name": "",
             "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "tombPerSecond",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
           }
         ],
         "stateMutability": "view",
@@ -1112,7 +1107,7 @@
     ]
   },
   "BondOracle": {
-    "address": "0xE4EFD87ad34360932E5325D77A0a6e39147DEbFa",
+    "address": "0x0A7EF7363c16e0AC2E0329438ee5054c2d9Ee366",
     "abi": [
       {
         "inputs": [
@@ -1569,7 +1564,7 @@
     ]
   },
   "SeigniorageOracle": {
-    "address": "0xf3471c818b1b632A1F8865B748c3A9f475bf9E21",
+    "address": "0x0A7EF7363c16e0AC2E0329438ee5054c2d9Ee366",
     "abi": [
       {
         "inputs": [
@@ -1974,7 +1969,7 @@
     ]
   },
   "tomb": {
-    "address": "0x9b7F7E44904Bb61a9710685c938eA5f867Cb36b2",
+    "address": "0x50878Af2b82330CaFF5Afe5441aB4159764adCE5",
     "abi": [
       {
         "inputs": [
@@ -2866,7 +2861,7 @@
     ]
   },
   "tShare": {
-    "address": "0x8F5Ba67C2C9613A3C1A9Eae62eEde11515110C96",
+    "address": "0x909722A7f409e681676CF8641b23F81cc538c723",
     "abi": [
       {
         "inputs": [
@@ -3544,7 +3539,7 @@
     ]
   },
   "tBond": {
-    "address": "0xEDcB2c0A53EC888635F159BcB6D7741f6386D232",
+    "address": "0xD49d262c9BBB4315e3f568Fd1EC1DEAF4eb424FB",
     "abi": [
       {
         "inputs": [],
@@ -3989,7 +3984,7 @@
     ]
   },
   "Treasury": {
-    "address": "0xFcED424Cc6836137b51aC7a4Ce80Aa46Ef7C8EA1",
+    "address": "0x236e6e982E13F53864A67E763E7D7eBC3323bAeB",
     "abi": [
       {
         "anonymous": false,
@@ -5128,7 +5123,7 @@
     ]
   },
   "Masonry": {
-    "address": "0x2A1AcA8221267016d01502240c912e1491Ef4802",
+    "address": "0xf0AF467892A355895c718025C8Ddd4B0E87f2Ba2",
     "abi": [
       {
         "anonymous": false,

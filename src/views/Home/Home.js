@@ -43,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const classes = useStyles();
   const TVL = useTotalValueLocked();
-  const tombFtmLpStats = useLpStats('TOMB-FTM-LP');
-  const tShareFtmLpStats = useLpStats('TSHARE-FTM-LP');
+  const tombFtmLpStats = useLpStats('TOMB-USDC-LP');
+  const tShareFtmLpStats = useLpStats('TOMB-USDC-LP');
   const tombStats = useTombStats();
   const tShareStats = usetShareStats();
   const tBondStats = useBondStats();
@@ -335,11 +335,7 @@ const Home = () => {
                 </CardIcon>
               </Box>
               <Box mt={2}>
-                <Button
-                  color="primary"
-                  onClick={onPresentTshareZap}
-                  variant="contained"
-                >
+                <Button color="primary" onClick={onPresentTshareZap} variant="contained">
                   Zap In
                 </Button>
               </Box>

@@ -31,7 +31,7 @@ export class TombFinance {
   TOMB: ERC20;
   TSHARE: ERC20;
   TBOND: ERC20;
-  FTM: ERC20;
+  USDC: ERC20;
 
   constructor(cfg: Configuration) {
     const { deployments, externalTokens } = cfg;
@@ -49,7 +49,7 @@ export class TombFinance {
     this.TOMB = new ERC20(deployments.tomb.address, provider, 'TOMB');
     this.TSHARE = new ERC20(deployments.tShare.address, provider, 'TSHARE');
     this.TBOND = new ERC20(deployments.tBond.address, provider, 'TBOND');
-    this.FTM = this.externalTokens['WFTM'];
+    this.USDC = this.externalTokens['USDC'];
 
     // Uniswap V2 Pair
     this.TOMBWFTM_LP = new Contract(externalTokens['TOMB-FTM-LP'][0], IUniswapV2PairABI, provider);
@@ -94,15 +94,16 @@ export class TombFinance {
   //===================================================================
 
   async getTombStat(): Promise<TokenStat> {
-    const { TombFtmRewardPool, TombFtmLpTombRewardPool, TombFtmLpTombRewardPoolOld } = this.contracts;
+    const { TombGenesisRewardPool } = this.contracts;
+    //const { TombFtmRewardPool, TombFtmLpTombRewardPool, TombFtmLpTombRewardPoolOld } = this.contracts;
     const supply = await this.TOMB.totalSupply();
-    const tombRewardPoolSupply = await this.TOMB.balanceOf(TombFtmRewardPool.address);
-    const tombRewardPoolSupply2 = await this.TOMB.balanceOf(TombFtmLpTombRewardPool.address);
-    const tombRewardPoolSupplyOld = await this.TOMB.balanceOf(TombFtmLpTombRewardPoolOld.address);
-    const tombCirculatingSupply = supply
-      .sub(tombRewardPoolSupply)
-      .sub(tombRewardPoolSupply2)
-      .sub(tombRewardPoolSupplyOld);
+
+    const tombRewardPoolSupply = await this.TOMB.balanceOf(TombGenesisRewardPool.address);
+    //const tombRewardPoolSupply2 = await this.TOMB.balanceOf(TombFtmLpTombRewardPool.address);
+    //const tombRewardPoolSupplyOld = await this.TOMB.balanceOf(TombFtmLpTombRewardPoolOld.address);
+    const tombCirculatingSupply = supply.sub(tombRewardPoolSupply);
+    //.sub(tombRewardPoolSupply2)
+    //.sub(tombRewardPoolSupplyOld);
     const priceInFTM = await this.getTokenPriceFromPancakeswap(this.TOMB);
     const priceOfOneFTM = await this.getWFTMPriceFromPancakeswap();
     const priceOfTombInDollars = (Number(priceInFTM) * Number(priceOfOneFTM)).toFixed(2);
@@ -129,7 +130,8 @@ export class TombFinance {
     const tokenAmountBN = await token0.balanceOf(lpToken.address);
     const tokenAmount = getDisplayBalance(tokenAmountBN, 18);
 
-    const ftmAmountBN = await this.FTM.balanceOf(lpToken.address);
+    const ftmAmountBN = await this.USDC.balanceOf(lpToken.address);
+
     const ftmAmount = getDisplayBalance(ftmAmountBN, 18);
     const tokenAmountInOneLP = Number(tokenAmount) / Number(lpTokenSupply);
     const ftmAmountInOneLP = Number(ftmAmount) / Number(lpTokenSupply);
@@ -156,7 +158,9 @@ export class TombFinance {
   async getBondStat(): Promise<TokenStat> {
     const { Treasury } = this.contracts;
     const tombStat = await this.getTombStat();
+    console.log('Treasury :', Treasury);
     const bondTombRatio = await Treasury.getBondPremiumRate();
+    console.log('bondTombRatio');
     let modifier = 1; // keep to 1 if no bondPremium is to be used
     if (getBalance(bondTombRatio, this.TOMB.decimal) > 0) {
       modifier = getBalance(bondTombRatio, this.TOMB.decimal);
@@ -268,6 +272,7 @@ export class TombFinance {
   ) {
     if (earnTokenName === 'TOMB') {
       if (!contractName.endsWith('TombRewardPool')) {
+        console.log('poolContract', poolContract);
         const rewardPerSecond = await poolContract.tombPerSecond();
         if (depositTokenName === 'WFTM') {
           return rewardPerSecond.mul(6000).div(11000).div(24);
@@ -307,10 +312,12 @@ export class TombFinance {
   async getDepositTokenPriceInDollars(tokenName: string, token: ERC20) {
     let tokenPrice;
     const priceOfOneFtmInDollars = await this.getWFTMPriceFromPancakeswap();
-    if (tokenName === 'WFTM') {
+    if (tokenName === 'USDC') {
       tokenPrice = priceOfOneFtmInDollars;
     } else {
       if (tokenName === 'TOMB-FTM-LP') {
+        tokenPrice = await this.getLPTokenPrice(token, this.TOMB, true);
+      } else if (tokenName === 'TOMB-USDC-LP') {
         tokenPrice = await this.getLPTokenPrice(token, this.TOMB, true);
       } else if (tokenName === 'TSHARE-FTM-LP') {
         tokenPrice = await this.getLPTokenPrice(token, this.TSHARE, false);
@@ -406,6 +413,7 @@ export class TombFinance {
   ): Promise<BigNumber> {
     const pool = this.contracts[poolName];
     try {
+      console.log('earnTokenName', earnTokenName);
       if (earnTokenName === 'TOMB') {
         return await pool.pendingTOMB(poolId, account);
       } else {
@@ -487,17 +495,18 @@ export class TombFinance {
     const ready = await this.provider.ready;
     if (!ready) return;
     const { chainId } = this.config;
-    const { WFTM } = this.config.externalTokens;
+    const { USDC } = this.config.externalTokens;
+    const wftm = new Token(chainId, USDC[0], USDC[1]);
 
-    const wftm = new Token(chainId, WFTM[0], WFTM[1]);
     const token = new Token(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
     try {
+      console.log('token :', wftm, token, this.provider);
       const wftmToToken = await Fetcher.fetchPairData(wftm, token, this.provider);
+      console.log('wftmToToken', wftmToToken);
       const priceInBUSD = new Route([wftmToToken], token);
-
       return priceInBUSD.midPrice.toFixed(4);
     } catch (err) {
-      console.error(`Failed to fetch token price of ${tokenContract.symbol}: ${err}`);
+      console.error(`Failed 10 to fetch token price of ${tokenContract.symbol}: ${err}`);
     }
   }
 
@@ -508,10 +517,13 @@ export class TombFinance {
 
     const { WFTM } = this.externalTokens;
 
-    const wftm = new TokenSpirit(chainId, WFTM.address, WFTM.decimal);
-    const token = new TokenSpirit(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
+    //const wftm = new TokenSpirit(chainId, WFTM.address, WFTM.decimal);
+    //const token = new TokenSpirit(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
+    const wftm = new Token(chainId, WFTM.address, WFTM.decimal);
+    const token = new Token(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
     try {
-      const wftmToToken = await FetcherSpirit.fetchPairData(wftm, token, this.provider);
+      //const wftmToToken = await FetcherSpirit.fetchPairData(wftm, token, this.provider);
+      const wftmToToken = await Fetcher.fetchPairData(wftm, token, this.provider);
       const liquidityToken = wftmToToken.liquidityToken;
       let ftmBalanceInLP = await WFTM.balanceOf(liquidityToken.address);
       let ftmAmount = Number(getFullDisplayBalance(ftmBalanceInLP, WFTM.decimal));
@@ -521,24 +533,29 @@ export class TombFinance {
       let priceOfShiba = (ftmAmount / shibaAmount) * Number(priceOfOneFtmInDollars);
       return priceOfShiba.toString();
     } catch (err) {
-      console.error(`Failed to fetch token price of ${tokenContract.symbol}: ${err}`);
+      console.error(`Failed 2 to fetch token price of ${tokenContract.symbol}: ${err}`);
     }
   }
 
   async getWFTMPriceFromPancakeswap(): Promise<string> {
+    /*
     const ready = await this.provider.ready;
     if (!ready) return;
     const { WFTM, FUSDT } = this.externalTokens;
     try {
+
       const fusdt_wftm_lp_pair = this.externalTokens['USDT-FTM-LP'];
       let ftm_amount_BN = await WFTM.balanceOf(fusdt_wftm_lp_pair.address);
       let ftm_amount = Number(getFullDisplayBalance(ftm_amount_BN, WFTM.decimal));
       let fusdt_amount_BN = await FUSDT.balanceOf(fusdt_wftm_lp_pair.address);
       let fusdt_amount = Number(getFullDisplayBalance(fusdt_amount_BN, FUSDT.decimal));
       return (fusdt_amount / ftm_amount).toString();
+      
     } catch (err) {
       console.error(`Failed to fetch token price of WFTM: ${err}`);
     }
+    */
+    return '1.00';
   }
 
   //===================================================================

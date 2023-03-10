@@ -2496,9 +2496,9 @@
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
 
-"@spookyswap/sdk@https://github.com/SpookySwap/spookyswap-sdk":
-  version "1.0.0"
-  resolved "https://github.com/SpookySwap/spookyswap-sdk#c5c85de6a324f190b44ce1d9aa26f87e1a54e9c5"
+"@spookyswap/sdk@https://github.com/echovl/sushiswap-arbi-sdk":
+  version "1.2.0"
+  resolved "https://github.com/echovl/sushiswap-arbi-sdk#a1c8fb6b4b63899f381263ecf2f176bdf9e32286"
   dependencies:
     "@uniswap/v2-core" "1.0.0"
     big.js "^5.2.2"

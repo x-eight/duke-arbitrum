@@ -168,7 +168,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'TOMB',
     finished: false,
     sort: 5,
-    closedForStaking: true,
+    closedForStaking: false,
   },
   TombUsdcRewardPool: {
     name: 'Earn TOMB by USDC',
@@ -179,7 +179,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     earnTokenName: 'TOMB',
     finished: false,
     sort: 4,
-    closedForStaking: true,
+    closedForStaking: false,
   },
 };
 

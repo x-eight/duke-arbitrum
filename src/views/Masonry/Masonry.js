@@ -52,6 +52,7 @@ const Masonry = () => {
   const stakedBalance = useStakedBalanceOnMasonry();
   const currentEpoch = useCurrentEpoch();
   const cashStat = useCashPriceInEstimatedTWAP();
+
   const totalStaked = useTotalStakedOnMasonry();
   const masonryAPR = useFetchMasonryAPR();
   const canClaimReward = useClaimRewardCheck();

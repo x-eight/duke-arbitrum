@@ -158,9 +158,8 @@ export class TombFinance {
   async getBondStat(): Promise<TokenStat> {
     const { Treasury } = this.contracts;
     const tombStat = await this.getTombStat();
-    console.log('Treasury :', Treasury);
     const bondTombRatio = await Treasury.getBondPremiumRate();
-    console.log('bondTombRatio');
+
     let modifier = 1; // keep to 1 if no bondPremium is to be used
     if (getBalance(bondTombRatio, this.TOMB.decimal) > 0) {
       modifier = getBalance(bondTombRatio, this.TOMB.decimal);
@@ -205,13 +204,13 @@ export class TombFinance {
   async getTombStatInEstimatedTWAP(): Promise<TokenStat> {
     const { SeigniorageOracle, TombFtmRewardPool } = this.contracts;
     const expectedPrice = await SeigniorageOracle.twap(this.TOMB.address, ethers.utils.parseEther('1'));
-
     const supply = await this.TOMB.totalSupply();
     const tombRewardPoolSupply = await this.TOMB.balanceOf(TombFtmRewardPool.address);
     const tombCirculatingSupply = supply.sub(tombRewardPoolSupply);
+
     return {
-      tokenInFtm: getDisplayBalance(expectedPrice),
-      priceInDollars: getDisplayBalance(expectedPrice),
+      tokenInFtm: getDisplayBalance(expectedPrice, 6),
+      priceInDollars: getDisplayBalance(expectedPrice, 6),
       totalSupply: getDisplayBalance(supply, this.TOMB.decimal, 0),
       circulatingSupply: getDisplayBalance(tombCirculatingSupply, this.TOMB.decimal, 0),
     };
@@ -248,8 +247,10 @@ export class TombFinance {
     const totalRewardPricePerDay = Number(stat.priceInDollars) * Number(getDisplayBalance(tokenPerHour.mul(24)));
     const totalStakingTokenInPool =
       Number(depositTokenPrice) * Number(getDisplayBalance(stakeInPool, depositToken.decimal));
-    const dailyAPR = (totalRewardPricePerDay / totalStakingTokenInPool) * 100;
-    const yearlyAPR = (totalRewardPricePerYear / totalStakingTokenInPool) * 100;
+
+    const dailyAPR = totalStakingTokenInPool === 0 ? 0 : (totalRewardPricePerDay / totalStakingTokenInPool) * 100;
+    const yearlyAPR = totalStakingTokenInPool === 0 ? 0 : (totalRewardPricePerYear / totalStakingTokenInPool) * 100;
+
     return {
       dailyAPR: dailyAPR.toFixed(2).toString(),
       yearlyAPR: yearlyAPR.toFixed(2).toString(),
@@ -272,7 +273,6 @@ export class TombFinance {
   ) {
     if (earnTokenName === 'TOMB') {
       if (!contractName.endsWith('TombRewardPool')) {
-        console.log('poolContract', poolContract);
         const rewardPerSecond = await poolContract.tombPerSecond();
         if (depositTokenName === 'WFTM') {
           return rewardPerSecond.mul(6000).div(11000).div(24);
@@ -413,7 +413,6 @@ export class TombFinance {
   ): Promise<BigNumber> {
     const pool = this.contracts[poolName];
     try {
-      console.log('earnTokenName', earnTokenName);
       if (earnTokenName === 'TOMB') {
         return await pool.pendingTOMB(poolId, account);
       } else {
@@ -500,9 +499,8 @@ export class TombFinance {
 
     const token = new Token(chainId, tokenContract.address, tokenContract.decimal, tokenContract.symbol);
     try {
-      console.log('token :', wftm, token, this.provider);
       const wftmToToken = await Fetcher.fetchPairData(wftm, token, this.provider);
-      console.log('wftmToToken', wftmToToken);
+
       const priceInBUSD = new Route([wftmToToken], token);
       return priceInBUSD.midPrice.toFixed(4);
     } catch (err) {

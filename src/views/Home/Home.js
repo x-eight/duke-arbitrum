@@ -138,10 +138,10 @@ const Home = () => {
         <Grid item xs={12} sm={8}>
           <Paper>
             <Box p={4}>
-              <h2>Welcome to Tomb Finance</h2>
-              <p>The first algorithmic stablecoin on Fantom Opera, pegged to the price of 1 FTM via seigniorage.</p>
+              <h2>Welcome to Duke Finance</h2>
+              <p>The first algorithmic stablecoin on Arbitrum One, pegged to the price of 1 FTM via seigniorage.</p>
               <p>
-                Stake your TSHARE in the Masonry to earn inflationary TOMB rewards or provide liquidity on pairs and
+                Stake your TSHARE in the Masonry to earn inflationary DUKE rewards or provide liquidity on pairs and
                 start earning today!
               </p>
             </Box>
@@ -176,7 +176,7 @@ const Home = () => {
                 variant="contained"
                 style={{ marginRight: '10px' }}
               >
-                Buy TOMB
+                Buy DUKE
               </Button>
               <Button variant="contained" target="_blank" href={buyTShareAddress} className={classes.button}>
                 Buy TSHARE
@@ -189,7 +189,7 @@ const Home = () => {
         <Grid item xs={12} sm={4}>
           <Card>
             <CardContent align="center" style={{ position: 'relative' }}>
-              <h2>TOMB</h2>
+              <h2>DUKE</h2>
               <Button
                 onClick={() => {
                   tombFinance.watchAssetInMetamask('TOMB');
@@ -300,7 +300,7 @@ const Home = () => {
         <Grid item xs={12} sm={6}>
           <Card>
             <CardContent align="center">
-              <h2>TOMB-FTM Spooky LP</h2>
+              <h2>DUKE-FTM Spooky LP</h2>
               <Box mt={2}>
                 <CardIcon>
                   <TokenSymbol symbol="TOMB-FTM-LP" />
@@ -313,7 +313,7 @@ const Home = () => {
               </Box>
               <Box mt={2}>
                 <span style={{ fontSize: '26px' }}>
-                  {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} TOMB /{' '}
+                  {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} DUKE /{' '}
                   {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} FTM
                 </span>
               </Box>

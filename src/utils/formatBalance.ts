@@ -14,6 +14,7 @@ export const getDisplayBalance = (
   if (ret.length > 12 && isTruncated) {
     return ret.slice(0, 12) + '...';
   }
+
   return ret;
 };
 

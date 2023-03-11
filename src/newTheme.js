@@ -13,8 +13,8 @@ const newTheme = createMuiTheme({
     },
     primary: {
       light: '#757ce8',
-      main: '#571eb1',
-      dark: '#2c2560',
+      main: '#a116c9',
+      dark: '#39014a',
       contrastText: '#000',
     },
     secondary: {
@@ -30,7 +30,7 @@ const newTheme = createMuiTheme({
     },
   },
   typography: {
-    color: '#2c2560',
+    color: '#39014a',
     fontFamily: ['"Poppins"', 'sans-serif'].join(','),
   },
 });

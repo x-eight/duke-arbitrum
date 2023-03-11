@@ -12,7 +12,7 @@ import booLogo from '../../assets/img/spooky.png';
 import zooLogo from '../../assets/img/zoo_logo.svg';
 import shibaLogo from '../../assets/img/shiba_logo.svg';
 
-import tombUsdcLpLogo from '../../assets/img/tomb-usdc-lp.png';
+import tombUsdcLpLogo from '../../assets/img/DUKE-USDC.png';
 import usdcLogo from '../../assets/img/USDC.png';
 import dukeLogo from '../../assets/img/DUKE.png';
 import dbondLogo from '../../assets/img/DBOND.png';

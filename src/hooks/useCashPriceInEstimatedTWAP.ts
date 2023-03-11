@@ -12,7 +12,7 @@ const useCashPriceInEstimatedTWAP = () => {
   }, [tombFinance]);
 
   useEffect(() => {
-    fetchCashPrice().catch((err) => console.error(`Failed to fetch TOMB price: ${err.stack}`));
+    fetchCashPrice().catch((err) => console.error(`Failed to fetch DUKE price: ${err.stack}`));
     const refreshInterval = setInterval(fetchCashPrice, config.refreshInterval);
     return () => clearInterval(refreshInterval);
   }, [setStat, tombFinance, fetchCashPrice]);

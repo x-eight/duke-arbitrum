@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import Page from '../../components/Page';
 import HomeImage from '../../assets/img/home.png';
-import CashImage from '../../assets/img/crypto_tomb_cash.svg';
+import CashImage from '../../assets/img/DUKE.png'; //'../../assets/img/crypto_tomb_cash.svg';
 import Image from 'material-ui-image';
 import { createGlobalStyle } from 'styled-components';
 import CountUp from 'react-countup';
@@ -139,9 +139,9 @@ const Home = () => {
           <Paper>
             <Box p={4}>
               <h2>Welcome to Duke Finance</h2>
-              <p>The first algorithmic stablecoin on Arbitrum One, pegged to the price of 1 FTM via seigniorage.</p>
+              <p>The first algorithmic stablecoin on Arbitrum One, pegged to the price of 1 USDC via seigniorage.</p>
               <p>
-                Stake your TSHARE in the Masonry to earn inflationary DUKE rewards or provide liquidity on pairs and
+                Stake your DSHARE in the Masonry to earn inflationary DUKE rewards or provide liquidity on pairs and
                 start earning today!
               </p>
             </Box>
@@ -179,7 +179,7 @@ const Home = () => {
                 Buy DUKE
               </Button>
               <Button variant="contained" target="_blank" href={buyTShareAddress} className={classes.button}>
-                Buy TSHARE
+                Buy DSHARE
               </Button>
             </CardContent>
           </Card>
@@ -203,7 +203,7 @@ const Home = () => {
               </Button>
               <Box mt={2}>
                 <CardIcon>
-                  <TokenSymbol symbol="TOMB" />
+                  <TokenSymbol symbol="DUKE" />
                 </CardIcon>
               </Box>
               Current Price
@@ -228,7 +228,7 @@ const Home = () => {
         <Grid item xs={12} sm={4}>
           <Card>
             <CardContent align="center" style={{ position: 'relative' }}>
-              <h2>TSHARE</h2>
+              <h2>DSHARE</h2>
               <Button
                 onClick={() => {
                   tombFinance.watchAssetInMetamask('TSHARE');
@@ -242,7 +242,7 @@ const Home = () => {
               </Button>
               <Box mt={2}>
                 <CardIcon>
-                  <TokenSymbol symbol="TSHARE" />
+                  <TokenSymbol symbol="DSHARE" />
                 </CardIcon>
               </Box>
               Current Price
@@ -265,7 +265,7 @@ const Home = () => {
         <Grid item xs={12} sm={4}>
           <Card>
             <CardContent align="center" style={{ position: 'relative' }}>
-              <h2>TBOND</h2>
+              <h2>DBOND</h2>
               <Button
                 onClick={() => {
                   tombFinance.watchAssetInMetamask('TBOND');
@@ -279,7 +279,7 @@ const Home = () => {
               </Button>
               <Box mt={2}>
                 <CardIcon>
-                  <TokenSymbol symbol="TBOND" />
+                  <TokenSymbol symbol="DBOND" />
                 </CardIcon>
               </Box>
               Current Price
@@ -328,7 +328,7 @@ const Home = () => {
         <Grid item xs={12} sm={6}>
           <Card>
             <CardContent align="center">
-              <h2>TSHARE-FTM Spooky LP</h2>
+              <h2>DSHARE-FTM Spooky LP</h2>
               <Box mt={2}>
                 <CardIcon>
                   <TokenSymbol symbol="TSHARE-FTM-LP" />
@@ -341,8 +341,8 @@ const Home = () => {
               </Box>
               <Box mt={2}>
                 <span style={{ fontSize: '26px' }}>
-                  {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} TSHARE /{' '}
-                  {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} FTM
+                  {tshareLPStats?.tokenAmount ? tshareLPStats?.tokenAmount : '-.--'} DSHARE /{' '}
+                  {tshareLPStats?.ftmAmount ? tshareLPStats?.ftmAmount : '-.--'} USDC
                 </span>
               </Box>
               <Box>${tshareLPStats?.priceOfOne ? tshareLPStats.priceOfOne : '-.--'}</Box>

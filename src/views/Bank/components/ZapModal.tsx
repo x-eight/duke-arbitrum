@@ -99,8 +99,8 @@ const ZapModal: React.FC<ZapProps> = ({ onConfirm, onDismiss, tokenName = '', de
         value={zappingToken}
       >
         <StyledMenuItem value={FTM_TICKER}>FTM</StyledMenuItem>
-        <StyledMenuItem value={TOMB_TICKER}>TOMB</StyledMenuItem>
-        <StyledMenuItem value={TSHARE_TICKER}>TSHARE</StyledMenuItem>
+        <StyledMenuItem value={TOMB_TICKER}>DUKE</StyledMenuItem>
+        <StyledMenuItem value={TSHARE_TICKER}>DSHARE</StyledMenuItem>
       </Select>
       <TokenInput
         onSelectMax={handleSelectMax}

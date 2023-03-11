@@ -1,11 +1,8 @@
 import React from 'react';
 
 //Graveyard ecosystem logos
-import tombLogo from '../../assets/img/crypto_tomb_cash.svg';
-import tShareLogo from '../../assets/img/crypto_tomb_share.svg';
 import tombLogoPNG from '../../assets/img/crypto_tomb_cash.f2b44ef4.png';
 import tShareLogoPNG from '../../assets/img/crypto_tomb_share.bf1a6c52.png';
-import tBondLogo from '../../assets/img/crypto_tomb_bond.svg';
 
 import tombFtmLpLogo from '../../assets/img/tomb_ftm_lp.png';
 import tshareFtmLpLogo from '../../assets/img/tshare_ftm_lp.png';
@@ -17,20 +14,26 @@ import shibaLogo from '../../assets/img/shiba_logo.svg';
 
 import tombUsdcLpLogo from '../../assets/img/tomb-usdc-lp.png';
 import usdcLogo from '../../assets/img/USDC.png';
+import dukeLogo from '../../assets/img/DUKE.png';
+import dbondLogo from '../../assets/img/DBOND.png';
+import dshareLogo from '../../assets/img/DSHARE.png';
 
 const logosBySymbol: { [title: string]: string } = {
   //Real tokens
   //=====================
-  TOMB: tombLogo,
+  TOMB: dukeLogo,//tombLogo,
   TOMBPNG: tombLogoPNG,
   TSHAREPNG: tShareLogoPNG,
-  TSHARE: tShareLogo,
-  TBOND: tBondLogo,
+  TSHARE: dshareLogo,//tShareLogo,
+  TBOND: dbondLogo,//tBondLogo,
   WFTM: wftmLogo,
   BOO: booLogo,
   SHIBA: shibaLogo,
   ZOO: zooLogo,
   USDC: usdcLogo,
+  DSHARE: dshareLogo,
+  DBOND: dbondLogo,
+  DUKE: dukeLogo,
   'TOMB-USDC-LP': tombUsdcLpLogo,
   'TOMB-FTM-LP': tombFtmLpLogo,
   'TSHARE-FTM-LP': tshareFtmLpLogo,

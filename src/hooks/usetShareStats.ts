@@ -12,7 +12,7 @@ const useShareStats = () => {
   }, [tombFinance]);
 
   useEffect(() => {
-    fetchSharePrice().catch((err) => console.error(`Failed to fetch TSHARE price: ${err.stack}`));
+    fetchSharePrice().catch((err) => console.error(`Failed to fetch DSHARE price: ${err.stack}`));
     const refreshInterval = setInterval(fetchSharePrice, config.refreshInterval);
     return () => clearInterval(refreshInterval);
   }, [setStat, tombFinance, fetchSharePrice]);

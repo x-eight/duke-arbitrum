@@ -12,7 +12,7 @@ const useCurrentEpoch = () => {
   }, [tombFinance]);
 
   useEffect(() => {
-    fetchCurrentEpoch().catch((err) => console.error(`Failed to fetch TOMB price: ${err.stack}`));
+    fetchCurrentEpoch().catch((err) => console.error(`Failed to fetch DUKE price: ${err.stack}`));
     const refreshInterval = setInterval(fetchCurrentEpoch, config.refreshInterval);
     return () => clearInterval(refreshInterval);
   }, [setCurrentEpoch, tombFinance, fetchCurrentEpoch]);

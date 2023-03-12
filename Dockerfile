@@ -1,5 +1,5 @@
 # Configuración de la imagen base
-FROM node:14-alpine AS build
+FROM node:16
 
 # Configuración de la ubicación de la app en el contenedor
 WORKDIR /app
@@ -9,7 +9,7 @@ COPY package*.json ./
 COPY yarn.lock ./
 
 # Instalación de las dependencias
-RUN yarn install --frozen-lockfile
+RUN yarn install
 
 # Copia del código fuente al contenedor
 COPY . .
@@ -17,17 +17,11 @@ COPY . .
 # Compilación del proyecto
 RUN yarn build
 
-# Configuración de la imagen base para producción
-FROM nginx:stable-alpine
+# Instalar cualquier dependencia necesaria
+RUN npm install -g serve
 
-# Copia del archivo de configuración personalizado
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Copia de los archivos de construcción a la imagen del contenedor
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Exposición del puerto 80 para el servidor web
+# Exponer el puerto 5000 para que pueda ser accesible desde fuera del contenedor
 EXPOSE 80
 
-# Inicio del servidor web de nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Iniciar el servidor
+CMD ["serve", "-s", "/app/build"]

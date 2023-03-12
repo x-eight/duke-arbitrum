@@ -1,4 +1,4 @@
-import React, { useMemo, useContext } from 'react';
+import React, { useMemo, /* useContext */ } from 'react';
 import styled from 'styled-components';
 
 // import Button from '../../../components/Button';
@@ -7,16 +7,16 @@ import { Button, Card, CardContent } from '@material-ui/core';
 // import CardContent from '../../../components/CardContent';
 import CardIcon from '../../../components/CardIcon';
 import { AddIcon, RemoveIcon } from '../../../components/icons';
-import FlashOnIcon from '@material-ui/icons/FlashOn';
+//import FlashOnIcon from '@material-ui/icons/FlashOn';
 import IconButton from '../../../components/IconButton';
 import Label from '../../../components/Label';
 import Value from '../../../components/Value';
-import { ThemeContext } from 'styled-components';
+//import { ThemeContext } from 'styled-components';
 
 import useApprove, { ApprovalState } from '../../../hooks/useApprove';
 import useModal from '../../../hooks/useModal';
 import useStake from '../../../hooks/useStake';
-import useZap from '../../../hooks/useZap';
+//import useZap from '../../../hooks/useZap';
 import useStakedBalance from '../../../hooks/useStakedBalance';
 import useStakedTokenPriceInDollars from '../../../hooks/useStakedTokenPriceInDollars';
 import useTokenBalance from '../../../hooks/useTokenBalance';
@@ -26,7 +26,7 @@ import { getDisplayBalance } from '../../../utils/formatBalance';
 
 import DepositModal from './DepositModal';
 import WithdrawModal from './WithdrawModal';
-import ZapModal from './ZapModal';
+//import ZapModal from './ZapModal';
 import TokenSymbol from '../../../components/TokenSymbol';
 import { Bank } from '../../../tomb-finance';
 
@@ -37,7 +37,7 @@ interface StakeProps {
 const Stake: React.FC<StakeProps> = ({ bank }) => {
   const [approveStatus, approve] = useApprove(bank.depositToken, bank.address);
 
-  const { color: themeColor } = useContext(ThemeContext);
+  //const { color: themeColor } = useContext(ThemeContext);
   const tokenBalance = useTokenBalance(bank.depositToken);
   const stakedBalance = useStakedBalance(bank.contract, bank.poolId);
   const stakedTokenPriceInDollars = useStakedTokenPriceInDollars(bank.depositTokenName, bank.depositToken);
@@ -49,7 +49,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal))
   ).toFixed(2);
   const { onStake } = useStake(bank);
-  const { onZap } = useZap(bank);
+  //const { onZap } = useZap(bank);
   const { onWithdraw } = useWithdraw(bank);
 
   const [onPresentDeposit, onDismissDeposit] = useModal(
@@ -65,6 +65,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     />,
   );
 
+  /*
   const [onPresentZap, onDissmissZap] = useModal(
     <ZapModal
       decimals={bank.depositToken.decimal}
@@ -76,6 +77,7 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
       tokenName={bank.depositTokenName}
     />,
   );
+  */
 
   const [onPresentWithdraw, onDismissWithdraw] = useModal(
     <WithdrawModal
@@ -123,12 +125,14 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
                   <RemoveIcon />
                 </IconButton>
                 <StyledActionSpacer />
+                {/*
                 <IconButton
                   disabled={bank.closedForStaking}
                   onClick={() => (bank.closedForStaking ? null : onPresentZap())}
                 >
                   <FlashOnIcon style={{ color: themeColor.grey[400] }} />
                 </IconButton>
+                */}
                 <StyledActionSpacer />
                 <IconButton
                   disabled={bank.closedForStaking}

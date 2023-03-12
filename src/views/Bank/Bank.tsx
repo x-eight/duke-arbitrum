@@ -30,12 +30,15 @@ const useStyles = makeStyles((theme) => ({
 const Bank: React.FC = () => {
   useEffect(() => window.scrollTo(0, 0));
   const classes = useStyles();
+
   const { bankId } = useParams();
+
   const bank = useBank(bankId);
 
   const { account } = useWallet();
   const { onRedeem } = useRedeem(bank);
   const statsOnPool = useStatsForPool(bank);
+
   return account && bank ? (
     <>
       <PageHeader
@@ -106,11 +109,12 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
 
   let pairName: string;
   let uniswapUrl: string;
-  if (bank.depositTokenName.includes('TOMB')) {
-    pairName = 'TOMB-FTM pair';
+
+  if (bank.depositTokenName.includes('DUKE')) {
+    pairName = 'DUKE-USDC pair';
     uniswapUrl = 'https://spookyswap.finance/add/FTM/' + tombAddr;
   } else {
-    pairName = 'TSHARE-FTM pair';
+    pairName = 'DSHARE-USDC pair';
     uniswapUrl = 'https://spookyswap.finance/add/FTM/' + tshareAddr;
   }
   return (

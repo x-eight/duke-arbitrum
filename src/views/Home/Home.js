@@ -43,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const classes = useStyles();
   const TVL = useTotalValueLocked();
-  const tombFtmLpStats = useLpStats('TOMB-USDC-LP');
-  const tShareFtmLpStats = useLpStats('TOMB-USDC-LP');
+  const tombFtmLpStats = useLpStats('DUKE-USDC-LP');
+  const tShareFtmLpStats = useLpStats('DUKE-USDC-LP');
   const tombStats = useTombStats();
   const tShareStats = usetShareStats();
   const tBondStats = useBondStats();
@@ -64,6 +64,7 @@ const Home = () => {
   const buyTShareAddress = 'https://spookyswap.finance/swap?outputCurrency=' + tShare.address;
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
+
   const tshareLPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
   const tombPriceInDollars = useMemo(
     () => (tombStats ? Number(tombStats.priceInDollars).toFixed(2) : null),
@@ -109,7 +110,7 @@ const Home = () => {
         tombLpZap.onZap(zappingToken, tokenName, amount);
         onDissmissTombZap();
       }}
-      tokenName={'TOMB-FTM-LP'}
+      tokenName={'DUKE-USDC-LP'}
     />,
   );
 
@@ -121,7 +122,7 @@ const Home = () => {
         tshareLpZap.onZap(zappingToken, tokenName, amount);
         onDissmissTshareZap();
       }}
-      tokenName={'TSHARE-FTM-LP'}
+      tokenName={'DSHARE-USDC-LP'}
     />,
   );
 
@@ -307,7 +308,7 @@ const Home = () => {
                 </CardIcon>
               </Box>
               <Box mt={2}>
-                <Button color="primary" onClick={onPresentTombZap} variant="contained">
+                <Button color="primary" onClick={onPresentTombZap} variant="contained" disabled={true}>
                   Zap In
                 </Button>
               </Box>
@@ -335,7 +336,7 @@ const Home = () => {
                 </CardIcon>
               </Box>
               <Box mt={2}>
-                <Button color="primary" onClick={onPresentTshareZap} variant="contained">
+                <Button color="primary" onClick={onPresentTshareZap} variant="contained" disabled={true}>
                   Zap In
                 </Button>
               </Box>

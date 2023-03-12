@@ -34,7 +34,7 @@ const logosBySymbol: { [title: string]: string } = {
   DSHARE: dshareLogo,
   DBOND: dbondLogo,
   DUKE: dukeLogo,
-  'TOMB-USDC-LP': tombUsdcLpLogo,
+  'DUKE-USDC-LP': tombUsdcLpLogo,
   'TOMB-FTM-LP': tombFtmLpLogo,
   'TSHARE-FTM-LP': tshareFtmLpLogo,
 };

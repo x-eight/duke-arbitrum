@@ -7,7 +7,7 @@ const configurations: { [env: string]: Configuration } = {
   development: {
     chainId: ChainId.MAINNET,
     networkName: 'Arbitrum One',
-    ftmscanUrl: 'https://explorer.arbitrum.io',
+    ftmscanUrl: 'https://arbiscan.io',
     defaultProvider: 'https://arb-mainnet.g.alchemy.com/v2/CZTZiGD6wtwwVUbmEcPc-l8YQWQSNeXf',
     deployments: require('./tomb-finance/deployments/deployments.testing.json'),
     externalTokens: {
@@ -31,7 +31,7 @@ const configurations: { [env: string]: Configuration } = {
   production: {
     chainId: ChainId.MAINNET,
     networkName: 'Arbitrum One',
-    ftmscanUrl: 'https://explorer.arbitrum.io',
+    ftmscanUrl: 'https://arbiscan.io',
     defaultProvider: 'https://arb-mainnet.g.alchemy.com/v2/CZTZiGD6wtwwVUbmEcPc-l8YQWQSNeXf',
     deployments: require('./tomb-finance/deployments/deployments.testing.json'),
     externalTokens: {

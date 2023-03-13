@@ -744,14 +744,16 @@ export class TombFinance {
       let assetUrl;
       if (assetName === 'DUKE') {
         asset = this.DUKE;
-        assetUrl = 'https://tomb.finance/presskit/tomb_icon_noBG.png';
+        assetUrl = 'https://duke-finance.s3.amazonaws.com/token/DUKE.png';
+        //assetUrl = 'https://tomb.finance/presskit/tomb_icon_noBG.png';
       } else if (assetName === 'DSHARE') {
         asset = this.DSHARE;
-        assetUrl = 'https://tomb.finance/presskit/tshare_icon_noBG.png';
+        assetUrl = 'https://duke-finance.s3.amazonaws.com/token/DSHARE.png';
+        //assetUrl = 'https://tomb.finance/presskit/tshare_icon_noBG.png';
       } else if (assetName === 'DBOND') {
         asset = this.DBOND;
-        console.log("this.DBOND",this.DBOND)
-        assetUrl = 'https://tomb.finance/presskit/tbond_icon_noBG.png';
+        assetUrl = 'https://duke-finance.s3.amazonaws.com/token/DBOND.png';
+        //assetUrl = 'https://tomb.finance/presskit/tbond_icon_noBG.png';
       }
       await ethereum.request({
         method: 'wallet_watchAsset',

@@ -112,16 +112,18 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
 
   if (bank.depositTokenName.includes('DUKE')) {
     pairName = 'DUKE-USDC pair';
-    uniswapUrl = 'https://spookyswap.finance/add/FTM/' + tombAddr;
+    uniswapUrl = 'https://app.sushi.com/add/DUKE/' + tombAddr;
+    //uniswapUrl = 'https://spookyswap.finance/add/FTM/' + tombAddr;
   } else {
     pairName = 'DSHARE-USDC pair';
-    uniswapUrl = 'https://spookyswap.finance/add/FTM/' + tshareAddr;
+    uniswapUrl = 'https://app.sushi.com/add/DUKE/' + tshareAddr;
+    //uniswapUrl = 'https://spookyswap.finance/add/FTM/' + tshareAddr;
   }
   return (
     <Card>
       <CardContent>
         <StyledLink href={uniswapUrl} target="_blank">
-          {`👻 Provide liquidity for ${pairName} now on SpookySwap 👻`}
+          {`👻 Provide liquidity for ${pairName} now on SushiSwap 👻`}
         </StyledLink>
       </CardContent>
     </Card>

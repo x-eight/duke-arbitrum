@@ -60,8 +60,8 @@ const Home = () => {
     tShare = tShareProd;
   }
 
-  const buyTombAddress = 'https://spookyswap.finance/swap?outputCurrency=' + tomb.address;
-  const buyTShareAddress = 'https://spookyswap.finance/swap?outputCurrency=' + tShare.address;
+  const buyTombAddress = 'https://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=' + tomb.address;
+  const buyTShareAddress = 'https://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=' + tShare.address;
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
 

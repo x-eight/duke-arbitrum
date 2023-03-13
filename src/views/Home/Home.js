@@ -193,7 +193,7 @@ const Home = () => {
               <h2>DUKE</h2>
               <Button
                 onClick={() => {
-                  tombFinance.watchAssetInMetamask('TOMB');
+                  tombFinance.watchAssetInMetamask('DUKE');
                 }}
                 color="primary"
                 variant="outlined"
@@ -232,7 +232,7 @@ const Home = () => {
               <h2>DSHARE</h2>
               <Button
                 onClick={() => {
-                  tombFinance.watchAssetInMetamask('TSHARE');
+                  tombFinance.watchAssetInMetamask('DSHARE');
                 }}
                 color="primary"
                 variant="outlined"
@@ -269,7 +269,7 @@ const Home = () => {
               <h2>DBOND</h2>
               <Button
                 onClick={() => {
-                  tombFinance.watchAssetInMetamask('TBOND');
+                  tombFinance.watchAssetInMetamask('DBOND');
                 }}
                 color="primary"
                 variant="outlined"

@@ -33,7 +33,7 @@ const Pit: React.FC = () => {
   const bondStat = useBondStats();
   const cashPrice = useCashPriceInLastTWAP();
 
-  const bondBalance = useTokenBalance(tombFinance?.TBOND);
+  const bondBalance = useTokenBalance(tombFinance?.DBOND);
 
   const handleBuyBonds = useCallback(
     async (amount: string) => {
@@ -68,9 +68,9 @@ const Pit: React.FC = () => {
               <StyledCardWrapper>
                 <ExchangeCard
                   action="Purchase"
-                  fromToken={tombFinance.TOMB}
+                  fromToken={tombFinance.DUKE}
                   fromTokenName="DUKE"
-                  toToken={tombFinance.TBOND}
+                  toToken={tombFinance.DBOND}
                   toTokenName="DBOND"
                   priceDesc={
                     !isBondPurchasable
@@ -97,9 +97,9 @@ const Pit: React.FC = () => {
               <StyledCardWrapper>
                 <ExchangeCard
                   action="Redeem"
-                  fromToken={tombFinance.TBOND}
+                  fromToken={tombFinance.DBOND}
                   fromTokenName="DBOND"
-                  toToken={tombFinance.TOMB}
+                  toToken={tombFinance.DUKE}
                   toTokenName="DUKE"
                   priceDesc={`${getDisplayBalance(bondBalance)} DBOND Available`}
                   onExchange={handleRedeemBonds}

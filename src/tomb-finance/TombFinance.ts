@@ -274,7 +274,6 @@ export class TombFinance {
     poolContract: Contract,
     depositTokenName: string,
   ) {
-    //console.log("getTokenPerSecond",earnTokenName,contractName,poolContract,depositTokenName)
     if (earnTokenName === 'DUKE') {
       if (!contractName.endsWith('TombRewardPool')) {
         const rewardPerSecond = await poolContract.tombPerSecond();

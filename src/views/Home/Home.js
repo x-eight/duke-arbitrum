@@ -133,7 +133,7 @@ const Home = () => {
         {/* Logo */}
         <Grid container item xs={12} sm={4} justify="center">
           {/* <Paper>xs=6 sm=3</Paper> */}
-          <Image color="none" style={{ width: '300px', paddingTop: '0px' }} src={CashImage} />
+          <Image color="none" style={{ width: '240px', paddingTop: '0px' }} src={CashImage} />
         </Grid>
         {/* Explanation text */}
         <Grid item xs={12} sm={8}>

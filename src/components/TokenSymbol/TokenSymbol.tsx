@@ -12,7 +12,8 @@ import booLogo from '../../assets/img/spooky.png';
 import zooLogo from '../../assets/img/zoo_logo.svg';
 import shibaLogo from '../../assets/img/shiba_logo.svg';
 
-import tombUsdcLpLogo from '../../assets/img/DUKE-USDC.png';
+import dukeUsdcLpLogo from '../../assets/img/DUKE_USDC.png';
+import dshareUsdcLpLogo from '../../assets/img/DSHARE_USDC.png';
 import usdcLogo from '../../assets/img/USDC.png';
 import dukeLogo from '../../assets/img/DUKE.png';
 import dbondLogo from '../../assets/img/DBOND.png';
@@ -34,7 +35,8 @@ const logosBySymbol: { [title: string]: string } = {
   DSHARE: dshareLogo,
   DBOND: dbondLogo,
   DUKE: dukeLogo,
-  'DUKE-USDC-LP': tombUsdcLpLogo,
+  'DUKE-USDC-LP': dukeUsdcLpLogo,
+  'DSHARE-USDC-LP': dshareUsdcLpLogo,
   'TOMB-FTM-LP': tombFtmLpLogo,
   'TSHARE-FTM-LP': tshareFtmLpLogo,
 };
@@ -42,13 +44,14 @@ const logosBySymbol: { [title: string]: string } = {
 type LogoProps = {
   symbol: string;
   size?: number;
+  width?: number;
 };
 
-const TokenSymbol: React.FC<LogoProps> = ({ symbol, size = 64 }) => {
+const TokenSymbol: React.FC<LogoProps> = ({ symbol, size = 64, width=undefined }) => {
   if (!logosBySymbol[symbol]) {
     throw new Error(`Invalid Token Logo symbol: ${symbol}`);
   }
-  return <img src={logosBySymbol[symbol]} alt={`${symbol} Logo`} width={size} height={size} />;
+  return <img src={logosBySymbol[symbol]} alt={`${symbol} Logo`} width={width? width:size} height={size} />;
 };
 
 export default TokenSymbol;

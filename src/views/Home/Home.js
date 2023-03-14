@@ -300,10 +300,10 @@ const Home = () => {
         <Grid item xs={12} sm={6}>
           <Card>
             <CardContent align="center">
-              <h2>DUKE-USDC Spooky LP</h2>
+              <h2>DUKE-USDC Sushi LP</h2>
               <Box mt={2}>
                 <CardIcon>
-                  <TokenSymbol symbol="TOMB-FTM-LP" />
+                  <TokenSymbol symbol="DUKE-USDC-LP" size={70} width={85} />
                 </CardIcon>
               </Box>
               <Box mt={2}>
@@ -328,10 +328,10 @@ const Home = () => {
         <Grid item xs={12} sm={6}>
           <Card>
             <CardContent align="center">
-              <h2>DSHARE-USDC Spooky LP</h2>
+              <h2>DSHARE-USDC Sushi LP</h2>
               <Box mt={2}>
                 <CardIcon>
-                  <TokenSymbol symbol="TSHARE-FTM-LP" />
+                  <TokenSymbol symbol="DSHARE-USDC-LP" size={70} width={85} />
                 </CardIcon>
               </Box>
               <Box mt={2}>

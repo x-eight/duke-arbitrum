@@ -91,14 +91,14 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
       tokenName={bank.depositTokenName}
     />,
   );
-
+  const isLpLogo = bank.depositTokenName.includes("LP")
   return (
     <Card>
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
             <CardIcon>
-              <TokenSymbol symbol={bank.depositToken.symbol} size={54} />
+              <TokenSymbol symbol={bank.depositToken.symbol} size={!isLpLogo? 54:63} width={!isLpLogo? 54:80} />
             </CardIcon>
             <Value value={getDisplayBalance(stakedBalance, bank.depositToken.decimal)} />
             <Label text={`≈ $${earnedInDollars}`} />

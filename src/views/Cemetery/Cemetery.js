@@ -10,14 +10,13 @@ import { Alert } from '@material-ui/lab';
 import UnlockWallet from '../../components/UnlockWallet';
 import Page from '../../components/Page';
 import CemeteryCard from './CemeteryCard';
-import CemeteryImage from '../../assets/img/cemetery.png';
 import { createGlobalStyle } from 'styled-components';
 
 import useBanks from '../../hooks/useBanks';
 
 const BackgroundImage = createGlobalStyle`
   body {
-    background: url(${CemeteryImage}) no-repeat !important;
+    background-image: radial-gradient(at 2rem 2rem ,rgb(175, 163, 163),rgb(7, 7, 7),rgb(133, 123, 123)) !important;
     background-size: cover !important;
   }
 `;

@@ -26,12 +26,11 @@ import useTotalStakedOnMasonry from '../../hooks/useTotalStakedOnMasonry';
 import useClaimRewardCheck from '../../hooks/masonry/useClaimRewardCheck';
 import useWithdrawCheck from '../../hooks/masonry/useWithdrawCheck';
 import ProgressCountdown from './components/ProgressCountdown';
-import MasonryImage from '../../assets/img/masonry.png';
 import { createGlobalStyle } from 'styled-components';
 
 const BackgroundImage = createGlobalStyle`
   body, html {
-    background: url(${MasonryImage}) no-repeat !important;
+    background-image: radial-gradient(at 2rem 2rem ,rgb(175, 163, 163),rgb(7, 7, 7),rgb(133, 123, 123)) !important;
     background-size: cover !important;
   }
 `;

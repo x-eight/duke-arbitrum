@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
 import Page from '../../components/Page';
-import PitImage from '../../assets/img/pit.png';
 import { createGlobalStyle } from 'styled-components';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { useWallet } from 'use-wallet';
@@ -20,7 +19,7 @@ import { BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN } from '../../tomb-finance/cons
 
 const BackgroundImage = createGlobalStyle`
   body {
-    background: url(${PitImage}) no-repeat !important;
+    background-image: radial-gradient(at 2rem 2rem ,rgb(175, 163, 163),rgb(7, 7, 7),rgb(133, 123, 123)) !important;
     background-size: cover !important;
   }
 `;

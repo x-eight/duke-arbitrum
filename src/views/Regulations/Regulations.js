@@ -4,13 +4,12 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 import Page from '../../components/Page';
-import RegulationsImage from '../../assets/img/regulations_bg.png';
 import { createGlobalStyle } from 'styled-components';
 import useTombFinance from '../../hooks/useTombFinance';
 
 const BackgroundImage = createGlobalStyle`
   body, html {
-    background: url(${RegulationsImage}) no-repeat !important;
+    background-image: radial-gradient(at 2rem 2rem ,rgb(175, 163, 163),rgb(7, 7, 7),rgb(133, 123, 123)) !important;
     background-size: cover !important;
   }
 `;
@@ -18,12 +17,12 @@ const StyledTableCell = withStyles((theme) => ({
   head: {
     fontSize: 18,
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    color: '#39014a',
+    color: '#b30260',
     fontWeight: 'bolder',
   },
   body: {
     fontSize: 14,
-    color: '#39014a',
+    color: '#b30260',
   },
 }))(TableCell);
 const useStyles = makeStyles((theme) => ({
@@ -89,7 +88,7 @@ const Regulations = () => {
                 style={index % 2 ? { background: 'rgba(255,255,255,0.9)' } : { background: 'rgba(255,255,255,0.8)' }}
                 key={row.epoch}
               >
-                <StyledTableCell style={{ color: '#39014a' }} align="center" component="th" scope="row">
+                <StyledTableCell style={{ color: '#b30260' }} align="center" component="th" scope="row">
                   {row.epoch}
                 </StyledTableCell>
                 <StyledTableCell align="center">{row.masonry}</StyledTableCell>

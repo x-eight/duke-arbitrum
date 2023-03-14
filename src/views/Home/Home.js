@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import Page from '../../components/Page';
-import HomeImage from '../../assets/img/home.png';
 import CashImage from '../../assets/img/DUKE.png'; //'../../assets/img/crypto_tomb_cash.svg';
 import Image from 'material-ui-image';
 import { createGlobalStyle } from 'styled-components';
@@ -27,7 +26,7 @@ import useTombFinance from '../../hooks/useTombFinance';
 
 const BackgroundImage = createGlobalStyle`
   body {
-    background: url(${HomeImage}) no-repeat !important;
+    background-image: radial-gradient(at 2rem 2rem ,rgb(175, 163, 163),rgb(7, 7, 7),rgb(133, 123, 123)) !important;
     background-size: cover !important;
   }
 `;

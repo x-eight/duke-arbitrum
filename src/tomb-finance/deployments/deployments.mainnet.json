@@ -1,6 +1,6 @@
 {
   "Usdc": {
-    "address": "0x03e3549b666D8e7248665c9015173eced59965Ec",
+    "address": "0x8F3f5b275184aC52B4f6157f1f3833Dc120cfB3D",
     "abi": [
       {
         "inputs": [
@@ -621,7 +621,7 @@
     ]
   },
   "DukeUsdcGenesisRewardPool": {
-    "address": "0x560d77a6016ed989940c2F1378fc0f3AdB5AC5A3",
+    "address": "0x8B90bec2f3295344619223772A8319a0d7c01527",
     "abi": [
       {
         "inputs": [
@@ -1107,7 +1107,7 @@
     ]
   },
   "DukeUsdcLPGenesisRewardPool": {
-    "address": "0x560d77a6016ed989940c2F1378fc0f3AdB5AC5A3",
+    "address": "0x8B90bec2f3295344619223772A8319a0d7c01527",
     "abi": [
       {
         "inputs": [
@@ -1593,7 +1593,7 @@
     ]
   },
   "BondOracle": {
-    "address": "0x0A7EF7363c16e0AC2E0329438ee5054c2d9Ee366",
+    "address": "0x6Ff9C4b9B27D97b65d7bfb9C393323Af4eD0C5e5",
     "abi": [
       {
         "inputs": [
@@ -2050,7 +2050,7 @@
     ]
   },
   "SeigniorageOracle": {
-    "address": "0x0A7EF7363c16e0AC2E0329438ee5054c2d9Ee366",
+    "address": "0x6Ff9C4b9B27D97b65d7bfb9C393323Af4eD0C5e5",
     "abi": [
       {
         "inputs": [
@@ -2455,7 +2455,7 @@
     ]
   },
   "tomb": {
-    "address": "0x50878Af2b82330CaFF5Afe5441aB4159764adCE5",
+    "address": "0xef36Bc1ca869d6148ed8595E22522cC1D92a1391",
     "abi": [
       {
         "inputs": [
@@ -3347,7 +3347,7 @@
     ]
   },
   "tShare": {
-    "address": "0x909722A7f409e681676CF8641b23F81cc538c723",
+    "address": "0xAB8d98e95A4698a905034ac85484b5db4A538Bd8",
     "abi": [
       {
         "inputs": [
@@ -4025,7 +4025,7 @@
     ]
   },
   "tBond": {
-    "address": "0xD49d262c9BBB4315e3f568Fd1EC1DEAF4eb424FB",
+    "address": "0x9fC5256e315C256000adb469796072Ef471e21FE",
     "abi": [
       {
         "inputs": [],
@@ -4470,7 +4470,7 @@
     ]
   },
   "Treasury": {
-    "address": "0x236e6e982E13F53864A67E763E7D7eBC3323bAeB",
+    "address": "0xCb8981dBAB2B5F21674De1E9520015331E90C9f5",
     "abi": [
       {
         "anonymous": false,
@@ -5609,7 +5609,7 @@
     ]
   },
   "Masonry": {
-    "address": "0xf0AF467892A355895c718025C8Ddd4B0E87f2Ba2",
+    "address": "0xeE44B924C5F2728Ae9ca808b3b08Eee2513d9cC5",
     "abi": [
       {
         "anonymous": false,

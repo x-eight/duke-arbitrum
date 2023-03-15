@@ -16,6 +16,7 @@ import ExchangeStat from './components/ExchangeStat';
 import useTokenBalance from '../../hooks/useTokenBalance';
 import { getDisplayBalance } from '../../utils/formatBalance';
 import { BOND_REDEEM_PRICE, BOND_REDEEM_PRICE_BN } from '../../tomb-finance/constants';
+import { useAddPopup } from '../../state/application/hooks';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -34,14 +35,27 @@ const Pit: React.FC = () => {
 
   const bondBalance = useTokenBalance(tombFinance?.DBOND);
 
+  const addPopup = useAddPopup();
+
   const handleBuyBonds = useCallback(
     async (amount: string) => {
-      const tx = await tombFinance.buyBonds(amount);
-      addTransaction(tx, {
-        summary: `Buy ${Number(amount).toFixed(2)} DBOND with ${amount} DUKE`,
+      //const tx = await tombFinance.buyBonds(amount);
+      //addTransaction(tx, {summary: `Buy ${Number(amount).toFixed(2)} DBOND with ${amount} DUKE`});
+      const summary=`Buy ${Number(amount).toFixed(2)} DBOND with ${amount} DUKE`
+      tombFinance.buyBonds(amount).then((tx) => addTransaction(tx, { summary }))
+      .catch((err) => {
+        if (err.message.includes('User denied')) {
+          // User denied transaction signature on MetaMask.
+          return;
+        }
+        const message = `Unable to ${summary[0].toLowerCase()}${summary.slice(1)}`;
+        console.error(`${message}: ${err.message || err.stack}`);
+        addPopup({ error: { message, stack: err.message || err.stack } });
+
       });
+    
     },
-    [tombFinance, addTransaction],
+    [addPopup, tombFinance, addTransaction],
   );
 
   const handleRedeemBonds = useCallback(

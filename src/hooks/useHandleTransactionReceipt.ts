@@ -16,7 +16,9 @@ function useHandleTransactionReceipt(): (promise: Promise<TransactionResponse>, 
             // User denied transaction signature on MetaMask.
             return;
           }
-          const message = `Unable to ${summary[0].toLowerCase()}${summary.slice(1)}`;
+
+          let message = `Unable to ${summary[0].toLowerCase()}${summary.slice(1)}`;
+          message = message.replace(/\b\w*genesis\w*\b/gi, 'Genesis Pool');
           console.error(`${message}: ${err.message || err.stack}`);
           addPopup({ error: { message, stack: err.message || err.stack } });
         });

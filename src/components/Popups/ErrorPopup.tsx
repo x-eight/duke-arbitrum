@@ -17,7 +17,7 @@ export default function ErrorPopup({ message, stack }: { message: string; stack:
         <AlertCircle color="#FF6871" size={24} />
       </div>
       <div>
-        <StyledPopupDesc>{message}</StyledPopupDesc>
+        <StyledPopupDesc>{`${message} `}</StyledPopupDesc>
         <StyledLink onClick={copyErrorDetails} href="#">
           Copy error details
         </StyledLink>

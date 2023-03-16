@@ -12,7 +12,7 @@ const useBondStats = () => {
   }, [tombFinance]);
 
   useEffect(() => {
-    fetchBondPrice().catch((err) => console.error(`Failed 1 to fetch DBOND price: ${err.stack}`));
+    fetchBondPrice().catch((err) => console.error(`Failed to fetch DBOND price: ${err.stack}`));
     const refreshInterval = setInterval(fetchBondPrice, config.refreshInterval);
     return () => clearInterval(refreshInterval);
   }, [setStat, tombFinance, fetchBondPrice]);

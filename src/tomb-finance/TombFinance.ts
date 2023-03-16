@@ -371,10 +371,7 @@ export class TombFinance {
   async buyBonds(amount: string | number): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
     const treasuryTombPrice = await Treasury.getTombPrice();
-    //console.log("111")
-    const test = await Treasury.buyBonds(decimalToBalance(amount), treasuryTombPrice);
-    //console.log("222")
-    return test;
+    return await Treasury.buyBonds(decimalToBalance(amount), treasuryTombPrice);
   }
 
   /**

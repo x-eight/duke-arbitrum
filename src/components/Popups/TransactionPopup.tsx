@@ -19,6 +19,7 @@ export default function TransactionPopup({
 }) {
   const { chainId } = useWallet();
   const theme = useContext(ThemeContext);
+  summary = summary ? summary.replace(/\b\w*genesis\w*\b/gi, 'Genesis Pool') : undefined
 
   return (
     <RowNoFlex>
@@ -26,7 +27,7 @@ export default function TransactionPopup({
         {success ? <CheckCircle color={theme.color.teal[200]} size={24} /> : <AlertCircle color="#FF6871" size={24} />}
       </div>
       <div>
-        <StyledPopupDesc>{summary ?? 'Hash: ' + hash.slice(0, 8) + '...' + hash.slice(58, 65)}</StyledPopupDesc>
+        <StyledPopupDesc>{`${summary ?? `Hash: ${hash.slice(0, 8)}...${hash.slice(58, 65)}`} `}</StyledPopupDesc>
         {chainId && (
           <StyledLink target="_blank" href={`${config.ftmscanUrl}/tx/${hash}`}>
             View on Arbiscan

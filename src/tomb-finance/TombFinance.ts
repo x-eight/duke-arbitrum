@@ -262,6 +262,21 @@ export class TombFinance {
   }
 
   /**
+   * Calculates the deplosit fee of a provided pool/bank
+   * DepositFee 1000 = 100%
+   * @param bank
+   * @returns
+   */
+  async getDepositFee(bank: Bank): Promise<any> {
+    if (this.myAccount === undefined) return;
+
+    const pool = this.contracts[bank.contract];
+    const info = await pool.poolInfo(bank.poolId);
+    const depositFee = getBalance(info.depositFee, 1);
+    return depositFee;
+  }
+
+  /**
    * Method to return the amount of tokens the pool yields per second
    * @param earnTokenName the name of the token that the pool is earning
    * @param contractName the contract of the pool/bank
@@ -359,8 +374,7 @@ export class TombFinance {
     //console.log("111")
     const test = await Treasury.buyBonds(decimalToBalance(amount), treasuryTombPrice);
     //console.log("222")
-    return test
-
+    return test;
   }
 
   /**
@@ -585,7 +599,7 @@ export class TombFinance {
     const amountOfRewardsPerDay = epochRewardsPerShare * Number(TOMBPrice) * 4;
     const masonrytShareBalanceOf = await this.DSHARE.balanceOf(Masonry.address);
     const masonryTVL = Number(getDisplayBalance(masonrytShareBalanceOf, this.DSHARE.decimal)) * Number(TSHAREPrice);
-    const realAPR = masonryTVL!==0?(((amountOfRewardsPerDay * 100) / masonryTVL) * 365):0;
+    const realAPR = masonryTVL !== 0 ? ((amountOfRewardsPerDay * 100) / masonryTVL) * 365 : 0;
     return realAPR;
   }
 

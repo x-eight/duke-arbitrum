@@ -17,6 +17,7 @@ import useStatsForPool from '../../hooks/useStatsForPool';
 import useRedeem from '../../hooks/useRedeem';
 import { Bank as BankEntity } from '../../tomb-finance';
 import useTombFinance from '../../hooks/useTombFinance';
+import usePoolInfo from '../../hooks/usePoolInfo';
 
 const useStyles = makeStyles((theme) => ({
   gridItem: {
@@ -38,6 +39,7 @@ const Bank: React.FC = () => {
   const { account } = useWallet();
   const { onRedeem } = useRedeem(bank);
   const statsOnPool = useStatsForPool(bank);
+  const poolInfo = usePoolInfo(bank);
 
   return account && bank ? (
     <>
@@ -45,6 +47,7 @@ const Bank: React.FC = () => {
         icon="🏦"
         subtitle={`Deposit ${bank?.depositTokenName} and earn ${bank?.earnTokenName}`}
         title={bank?.name}
+        fee={poolInfo}
       />
       <Box>
         <Grid container justify="center" spacing={3} style={{ marginBottom: '50px' }}>

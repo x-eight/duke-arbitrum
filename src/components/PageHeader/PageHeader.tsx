@@ -5,14 +5,16 @@ interface PageHeaderProps {
   icon: React.ReactNode;
   subtitle?: string;
   title?: string;
+  fee?: number
 }
 
-const PageHeader: React.FC<PageHeaderProps> = ({ icon, subtitle, title }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ icon, subtitle, title,fee }) => {
   return (
     <StyledPageHeader>
       {/* <StyledIcon>{icon}</StyledIcon> */}
       <StyledTitle>{title}</StyledTitle>
       <StyledSubtitle>{subtitle}</StyledSubtitle>
+      {fee!==undefined?(<StyledDeposit>Deposit fee {fee}%</StyledDeposit>):null}
     </StyledPageHeader>
   );
 };
@@ -39,6 +41,15 @@ const StyledTitle = styled.h1`
 const StyledSubtitle = styled.h3`
   color: ${(props) => props.theme.color.grey[400]};
   font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+`;
+
+const StyledDeposit = styled.h4`
+  color: ${(props) => props.theme.color.grey[400]};
+  font-size: 13px;
   font-weight: 400;
   margin: 0;
   padding: 0;

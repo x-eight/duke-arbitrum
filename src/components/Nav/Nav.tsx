@@ -113,9 +113,11 @@ const Nav = () => {
               <Link color="textPrimary" to="/pit" className={classes.link}>
                 Deeds
               </Link>
+              {/*
               <Link color="textPrimary" to="/regulations" className={classes.link}>
                 Regulations
-              </Link>
+              </Link> 
+              */}
               <a href="https://docs.tomb.finance" className={classes.link}>
                 Docs
               </a>
@@ -159,7 +161,7 @@ const Nav = () => {
                 <ListItemLink primary="Cemetery" to="/cemetery" />
                 <ListItemLink primary="Masonry" to="/masonry" />
                 <ListItemLink primary="Pit" to="/pit" />
-                <ListItemLink primary="Regulations" to="/regulations" />
+                {/* <ListItemLink primary="Regulations" to="/regulations" /> */}
                 <ListItem button component="a" href="https://docs.tomb.finance">
                   <ListItemText>Docs</ListItemText>
                 </ListItem>

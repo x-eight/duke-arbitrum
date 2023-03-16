@@ -15,7 +15,7 @@ import config from './config';
 import Updaters from './state/Updaters';
 import Loader from './components/Loader';
 import Popups from './components/Popups';
-import Regulations from './views/Regulations/Regulations';
+//import Regulations from './views/Regulations/Regulations';
 
 const Home = lazy(() => import('./views/Home'));
 const Cemetery = lazy(() => import('./views/Cemetery'));
@@ -55,9 +55,11 @@ const App: React.FC = () => {
             <Route path="/pit">
               <Pit />
             </Route>
+            {/*
             <Route path="/regulations">
               <Regulations />
             </Route>
+            */}
             <Route path="*">
               <NoMatch />
             </Route>

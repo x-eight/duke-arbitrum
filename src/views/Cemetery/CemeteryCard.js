@@ -5,7 +5,7 @@ import { Box, Button, Card, CardActions, CardContent, Typography, Grid } from '@
 import TokenSymbol from '../../components/TokenSymbol';
 
 const CemeteryCard = ({ bank }) => {
-  const isLpLogo = bank.depositTokenName.includes("LP")
+  const isLpLogo = bank.depositTokenName.includes('LP');
   return (
     <Grid item xs={12} md={4} lg={4}>
       <Card variant="outlined">
@@ -25,7 +25,7 @@ const CemeteryCard = ({ bank }) => {
                 justifyContent: 'center',
               }}
             >
-              <TokenSymbol size={!isLpLogo? 32:41} width={!isLpLogo? 32:49} symbol={bank.depositTokenName} />
+              <TokenSymbol size={!isLpLogo ? 32 : 41} width={!isLpLogo ? 32 : 49} symbol={bank.depositTokenName} />
             </Box>
             <Typography variant="h5" component="h2">
               {bank.depositTokenName}

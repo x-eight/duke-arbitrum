@@ -15,7 +15,7 @@ import usetShareStats from '../../hooks/usetShareStats';
 import useTotalValueLocked from '../../hooks/useTotalValueLocked';
 import { tomb as tombTesting, tShare as tShareTesting } from '../../tomb-finance/deployments/deployments.testing.json';
 import { tomb as tombProd, tShare as tShareProd } from '../../tomb-finance/deployments/deployments.mainnet.json';
-
+import config from '../../config';
 import MetamaskFox from '../../assets/img/metamask-fox.svg';
 
 import { Box, Button, Card, CardContent, Grid, Paper } from '@material-ui/core';
@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
+  const USDC = config.externalTokens['USDC'][0]
   const classes = useStyles();
   const TVL = useTotalValueLocked();
   const tombFtmLpStats = useLpStats('DUKE-USDC-LP');
@@ -59,8 +60,8 @@ const Home = () => {
     tShare = tShareProd;
   }
 
-  const buyTombAddress = 'https://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=' + tomb.address;
-  const buyTShareAddress = 'https://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=' + tShare.address;
+  const buyTombAddress = `https://app.sushi.com/swap?inputCurrency=${USDC}&outputCurrency=${tomb.address}`
+  const buyTShareAddress = `https://app.sushi.com/swap?inputCurrency=${USDC}&outputCurrency=${tShare.address}`
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
 

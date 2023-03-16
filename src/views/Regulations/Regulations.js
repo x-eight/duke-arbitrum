@@ -17,12 +17,12 @@ const StyledTableCell = withStyles((theme) => ({
   head: {
     fontSize: 18,
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    color: '#b30260',
+    color: '#121212',
     fontWeight: 'bolder',
   },
   body: {
     fontSize: 14,
-    color: '#b30260',
+    color: '#121212',
   },
 }))(TableCell);
 const useStyles = makeStyles((theme) => ({
@@ -74,7 +74,7 @@ const Regulations = () => {
           <TableHead>
             <TableRow>
               <StyledTableCell align="center">Epoch</StyledTableCell>
-              <StyledTableCell align="center">Masonry funding</StyledTableCell>
+              <StyledTableCell align="center">Valley funding</StyledTableCell>
               <StyledTableCell align="center">DAO funding</StyledTableCell>
               <StyledTableCell align="center">DEV funding</StyledTableCell>
               <StyledTableCell align="center">Total</StyledTableCell>
@@ -88,7 +88,7 @@ const Regulations = () => {
                 style={index % 2 ? { background: 'rgba(255,255,255,0.9)' } : { background: 'rgba(255,255,255,0.8)' }}
                 key={row.epoch}
               >
-                <StyledTableCell style={{ color: '#b30260' }} align="center" component="th" scope="row">
+                <StyledTableCell style={{ color: '#121212' }} align="center" component="th" scope="row">
                   {row.epoch}
                 </StyledTableCell>
                 <StyledTableCell align="center">{row.masonry}</StyledTableCell>

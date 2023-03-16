@@ -79,7 +79,7 @@ export class TombFinance {
     this.fetchMasonryVersionOfUser()
       .then((version) => (this.masonryVersionOfUser = version))
       .catch((err) => {
-        console.error(`Failed to fetch masonry version: ${err.stack}`);
+        console.error(`Failed to fetch valley version: ${err.stack}`);
         this.masonryVersionOfUser = 'latest';
       });
   }
@@ -624,7 +624,7 @@ export class TombFinance {
 
   async stakeShareToMasonry(amount: string): Promise<TransactionResponse> {
     if (this.isOldMasonryMember()) {
-      throw new Error("you're using old masonry. please withdraw and deposit the TSHARE again.");
+      throw new Error("you're using old valley. please withdraw and deposit the TSHARE again.");
     }
     const Masonry = this.currentMasonry();
     return await Masonry.stake(decimalToBalance(amount));

@@ -11,7 +11,7 @@ const useFetchMasonryAPR = () => {
   }, [tombFinance]);
 
   useEffect(() => {
-    fetchMasonryPR().catch((err) => console.error(`Failed to fetch masonry apr: ${err.stack}`));
+    fetchMasonryPR().catch((err) => console.error(`Failed to fetch valley apr: ${err.stack}`));
     const refreshInterval = setInterval(fetchMasonryPR, config.refreshInterval);
     return () => clearInterval(refreshInterval);
   }, [setApr, tombFinance, fetchMasonryPR]);
